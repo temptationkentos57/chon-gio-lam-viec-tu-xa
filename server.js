@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse incoming request bodies
+// Middleware to parse incoming request bodies in JSON format
 app.use(bodyParser.json());
+// Middleware to parse URL-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // MongoDB connection with error handling
