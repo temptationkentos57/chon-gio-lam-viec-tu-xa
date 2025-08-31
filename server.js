@@ -12,7 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // MongoDB connection with error handling
 mongoose.connect('mongodb://localhost:27017/chon-gio-lam-viec-tu-xa', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB connection error:', err));
+  .catch(err => {
+    console.log('MongoDB connection error:', err);
+    process.exit(1); // Exit process with failure
+  });
 
 // API routes
 app.get('/', (req, res) => {
