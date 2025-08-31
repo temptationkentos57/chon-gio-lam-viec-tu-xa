@@ -5,20 +5,21 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
 
-// Middleware
+// Middleware to parse incoming request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// MongoDB connection
+// MongoDB connection with error handling
 mongoose.connect('mongodb://localhost:27017/chon-gio-lam-viec-tu-xa', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+  .catch(err => console.log('MongoDB connection error:', err));
 
 // API routes
 app.get('/', (req, res) => {
   res.send('Chào mừng đến với ứng dụng Chọn Giờ Làm Việc Từ Xa!');
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
