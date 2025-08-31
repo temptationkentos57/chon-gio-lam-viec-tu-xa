@@ -23,7 +23,11 @@ app.get('/', (req, res) => {
   res.send('Chào mừng đến với ứng dụng Chọn Giờ Làm Việc Từ Xa!');
 });
 
-// Start the server
-app.listen(PORT, () => {
+// Start the server and handle errors
+app.listen(PORT, (err) => {
+  if (err) {
+    console.error('Error starting the server:', err);
+    process.exit(1);
+  }
   console.log(`Server is running on http://localhost:${PORT}`);
 });
